@@ -1,5 +1,5 @@
 import MySQLdb
-import player
+
 
 def connect_matches():
     db = MySQLdb.connect("localhost" , "root" , "cT$82!sE", "reaction_game_db")

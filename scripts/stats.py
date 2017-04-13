@@ -1,4 +1,6 @@
-import db
+from scripts import db
+
+
 ###########################################################
 ## print stats ############################################
 ## such as number of unranked/ranked matches ##############
