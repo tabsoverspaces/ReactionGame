@@ -87,3 +87,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/misc.xml
+*.xml
+.idea/Reaction Game.iml
