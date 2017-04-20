@@ -43,7 +43,7 @@ class ranked_match():
     def setup(self):
         self.base_widget.move(0,0)
         self.base_widget.resize(800, 600)
-        self.base_widget.setWindowTitle("Unranked match")
+        self.base_widget.setWindowTitle("Ranked match")
 
         # top-most portion setup
         self.title_label.move(300, 10)
@@ -60,6 +60,7 @@ class ranked_match():
         self.rounds_text.move(200, 200)
         # player1 setup
         self.name_label_1.move(50, 50)
+        self.name_label_2.move(700, 50)
         # notification textbox
         self.textbox.move(300, 380)
         self.textbox.resize(200, 200)
