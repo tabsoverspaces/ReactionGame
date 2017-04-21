@@ -1,10 +1,9 @@
 import sys
 
-import gui_home
-import gui_unranked_match
+
 from PyQt5 import QtCore, QtWidgets
 
-from scripts import gui_ranked_match, gui_unranked_match, gui_tournament_main, quit_gui
+from scripts import gui_ranked_match, gui_unranked_match, gui_tournament_main, gui_home, gui_ranking
 
 
 # import gui_tournament
@@ -25,21 +24,25 @@ class gui():
         self.home_gui.unranked_match_btn.clicked.connect(self.show_unranked_match)
         self.home_gui.ranked_match_btn.clicked.connect(self.show_ranked_match)
         self.home_gui.tournament_btn.clicked.connect(self.show_tournament)
+        self.home_gui.rankings_btn.clicked.connect(self.show_rankings)
 
         # unranked page
         self.unranked_gui = gui_unranked_match.unranked_match(self.central_widget)
-        self.unranked_gui.quit_button.clicked.connect(self.show_home_gui)
 
         #ranked page
         self.ranked_gui = gui_ranked_match.ranked_match(self.central_widget)
-        self.ranked_gui.quit_button.clicked.connect(self.show_home_gui_ranked)
 
         #tournament page
         self.tournament_gui = gui_tournament_main.tournament(self.central_widget)
-        self.tournament_gui.quit_btn.clicked.connect(self.show_home_gui_tournament)
 
         #rankings page
+        self.ranking_gui = gui_ranking.ranking_panel(self.central_widget)
 
+        # button listeners
+        self.unranked_gui.quit_button.clicked.connect(self.show_home_gui)
+        self.ranked_gui.quit_button.clicked.connect(self.show_home_gui)
+        self.tournament_gui.quit_btn.clicked.connect(self.show_home_gui)
+        self.ranking_gui.back_button.clicked.connect(self.show_home_gui)
 
         # quit
         # self.quit_gui_main = quit_gui.home_page(self.central_widget)
@@ -66,24 +69,47 @@ class gui():
 
     def show_unranked_match(self):
         self.home_gui.base_widget.hide()
+        #
         self.unranked_gui.base_widget.show()
+        #
+        self.ranked_gui.base_widget.hide()
+        self.tournament_gui.base_widget.hide()
+        self.ranking_gui.base_widget.hide()
+
     def show_home_gui(self):
         self.home_gui.base_widget.show()
+        #
         self.unranked_gui.base_widget.hide()
+        self.ranked_gui.base_widget.hide()
+        self.tournament_gui.base_widget.hide()
+        self.ranking_gui.base_widget.hide()
 
     def show_ranked_match(self):
         self.home_gui.base_widget.hide()
+        self.unranked_gui.base_widget.hide()
+        #
         self.ranked_gui.base_widget.show()
-    def show_home_gui_ranked(self):
-        self.home_gui.base_widget.show()
-        self.ranked_gui.base_widget.hide()
+        #
+        self.tournament_gui.base_widget.hide()
+        self.ranking_gui.base_widget.hide()
 
     def show_tournament(self):
         self.home_gui.base_widget.hide()
+        self.unranked_gui.base_widget.hide()
+        self.ranked_gui.base_widget.hide()
+        #
         self.tournament_gui.base_widget.show()
-    def show_home_gui_tournament(self):
-        self.home_gui.base_widget.show()
+        #
+        self.ranking_gui.base_widget.hide()
+
+    def show_rankings(self):
+        self.home_gui.base_widget.hide()
+        self.unranked_gui.base_widget.hide()
+        self.ranked_gui.base_widget.hide()
         self.tournament_gui.base_widget.hide()
+        #
+        self.ranking_gui.base_widget.show()
+
     def close_app(self):
         self.home_gui.base_widget.hide()
         sys.exit(0)

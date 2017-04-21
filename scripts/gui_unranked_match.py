@@ -35,7 +35,7 @@ class unranked_match():
             label.setText("1")
             self.rounds_list.append(label)
 
-        # notificcation text box
+        # notification text box
         self.textbox = QTextEdit(self.base_widget)
 
         self.setup()

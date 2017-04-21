@@ -31,7 +31,7 @@ class tournament:
         #setup up buttons location
         self.set_buttons_location()
 
-        self.base_widget.show()
+        self.base_widget.hide()
     # geo position the buttons
     def set_buttons_location(self):
         # x location FIXED
