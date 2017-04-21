@@ -2,6 +2,7 @@ import sys
 
 from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtGui
+import gui_bracket_widget
 
 class tournament:
     ###
@@ -14,6 +15,8 @@ class tournament:
         self.rankings_btn = QPushButton("Rankings and stats", self.base_widget)
         self.quit_btn = QPushButton("Quit Tournament", self.base_widget)
 
+        
+        self.bracket = gui_bracket_widget.bracket(self.base_widget)
 
         #add buttons to a list
         self.list_buttons = [self.tournament_btn, self.rankings_btn, self.quit_btn]
