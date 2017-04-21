@@ -132,22 +132,27 @@ try:
 
     if self.p1.roundsWon == 3:
         print(self.p1.name, " wins!")
-        print("Average reaction time :", self.p1.getAverage())
-        print("Best reaction time : ", self.p1.best_time)
-        self.p1.printAverages()
+        # print("Average reaction time :", self.p1.getAverage())
+        # print("Best reaction time : ", self.p1.best_time)
+        # self.p1.printAverages()
 
         if (self.ranked == 1):
             end_game = end_game_object(self.p1, self.p2)
             end_game.write_ranked_match()
+        elif:
+            end_game.write_unranked_matches()
+            
     elif self.p2.roundsWon == 3:
         print(self.p2.name, " wins!")
-        print("Average reaction time :", self.p2.getAverage())
-        print("Best reaction time : ", self.p2.best_time)
-        self.p2.printAverages()
+        # print("Average reaction time :", self.p2.getAverage())
+        # print("Best reaction time : ", self.p2.best_time)
+        # self.p2.printAverages()
 
         if (self.ranked == 1):
             end_game = end_game_object(self.p2, self.p1)
             end_game.write_ranked_match()
+        elif:
+            end_game.write_unranked_matches()
 
     time.sleep(3)
 finally:
@@ -326,8 +331,8 @@ class end_game_object():
         self.winner = winner
         self.player = player
 
-    def writeUnrankedMatch(self):
-        db.insertUnranked(self.winner.name, self.winner.getAverage(), self.winner.best_time)
+    def write_unranked_matches(self):
+        db.update_unranked_matches()
 
     def write_ranked_match(self):
         db.insertRanked(self.winner.name, self.winner.getAverage(), self.winner.best_time)
