@@ -12,12 +12,21 @@ import random
 class Tournament:
     'Initialisation of all needed lists'
 
+    # The Roster lists is for the participating players, whereas the Games list is for the corresponding matches
+
+    # -Finals
     bo8Roster = []
     bo8Games = []
+
+    # Semi-Finals
     bo4Roster = []
     bo4Games = []
+
+    # Final
     bo2Roster = []
     bo2Games = []
+
+    # The Winner
     winner = []
 
     # In order for the init method to work, you need to pass a whole list as argument like ['Test', 'Test2', 'Test3', 'Test4', 'Test5', 'Test6', 'Test7', 'Test8']
