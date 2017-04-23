@@ -14,7 +14,7 @@ class Tournament:
 
     # The Roster lists is for the participating players, whereas the Games list is for the corresponding matches
 
-    # -Finals
+    # Quarter-Finals
     bo8Roster = []
     bo8Games = []
 
