@@ -15,16 +15,16 @@ class Tournament:
     # The Roster lists is for the participating players, whereas the Games list is for the corresponding matches
 
     # Quarter-Finals
-    bo8Roster = []
-    bo8Games = []
+    quarterfinalsRoster = []
+    quarterfinalsGames = []
 
     # Semi-Finals
-    bo4Roster = []
-    bo4Games = []
+    semifinalsRoster = []
+    semifinalsGames = []
 
     # Final
-    bo2Roster = []
-    bo2Games = []
+    finalRoster = []
+    finalGame = []
 
     # The Winner
     winner = []
@@ -39,16 +39,16 @@ class Tournament:
         self.printList(temp)
         while (len(temp) >= 1):
             rnd = random.randint(0, len(temp)-1)
-            self.bo8Roster.append(temp[rnd])
+            self.quarterfinalsRoster.append(temp[rnd])
             temp.remove(temp[rnd])
-        self.matchCreator(self.bo8Roster, self.bo8Games)
+        self.matchCreator(self.quarterfinalsRoster, self.quarterfinalsGames)
 
 
     def matchCreator(self, roster, games):
         y = int(len(roster)/2)
         for x in (range(0, y)):
             games.append(self.createMatch(roster[x*2], roster[(x*2)+1]))
-        self.printList(self.bo8Games)
+        self.printList(self.quarterfinalsGames)
 
     # createMatch is a placeholder, it will be replaced by the actual object used to create a match
 
