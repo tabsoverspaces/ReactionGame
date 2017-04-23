@@ -6,7 +6,7 @@ import match
 
 import random
 
-
+# match.py line 228 returns results
 
 
 class Tournament:
@@ -49,6 +49,10 @@ class Tournament:
         for x in (range(0, y)):
             games.append(self.createMatch(roster[x*2], roster[(x*2)+1]))
         self.printList(self.quarterfinalsGames)
+
+    def playMatches(self, games, roster):
+        for x in range(len(games)):
+            roster.append(games[x].start.winner) # incomplete
 
     # createMatch is a placeholder, it will be replaced by the actual object used to create a match
 
