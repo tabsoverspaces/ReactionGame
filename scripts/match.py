@@ -87,9 +87,9 @@ GPIO.setup(p2button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 class match_class:
     ###
     def __init__(self, player1, player2,
-                 ranked):  # constructor . Needs to be modified so that it takes two paramters, Player1 name and Player2 name which will be entered prior to the start of the game
-        self.p1 = player.Player(player1);
-        self.p2 = player.Player(player2);
+                 ranked):
+        self.p1 = player.Player(player1)
+        self.p2 = player.Player(player2)
 
         self.roundflag = False
         self.thread = dnf_thread(self)  # create instance of class dnf_thread
@@ -121,45 +121,45 @@ class match_class:
     ## START GAME ##
     ################
     def start(self):
+        self.thread.start()
+        try:
 
+            while self.p1.roundsWon < 3 and self.p2.roundsWon < 3:
+                GPIO.output(rounds[self.roundsPlayed], GPIO.HIGH)
+                self.roundstart()
 
-self.thread.start()
-try:
+            if self.p1.roundsWon == 3:
+                print(self.p1.name, " wins!")
+                # print("Average reaction time :", self.p1.getAverage())
+                # print("Best reaction time : ", self.p1.best_time)
+                # self.p1.printAverages()
 
-    while self.p1.roundsWon < 3 and self.p2.roundsWon < 3:
-        GPIO.output(rounds[self.roundsPlayed], GPIO.HIGH)
-        self.roundstart();
+                end_game = end_game_object(self.p1, self.p2)
+                if (self.ranked == 1):
 
-    if self.p1.roundsWon == 3:
-        print(self.p1.name, " wins!")
-        # print("Average reaction time :", self.p1.getAverage())
-        # print("Best reaction time : ", self.p1.best_time)
-        # self.p1.printAverages()
+                    end_game.write_ranked_match()
+                else:
+                    end_game.write_unranked_matches()
 
-        if (self.ranked == 1):
-            end_game = end_game_object(self.p1, self.p2)
-            end_game.write_ranked_match()
-        elif:
-            end_game.write_unranked_matches()
-            
-    elif self.p2.roundsWon == 3:
-        print(self.p2.name, " wins!")
-        # print("Average reaction time :", self.p2.getAverage())
-        # print("Best reaction time : ", self.p2.best_time)
-        # self.p2.printAverages()
+            elif self.p2.roundsWon == 3:
+                print(self.p2.name, " wins!")
+                # print("Average reaction time :", self.p2.getAverage())
+                # print("Best reaction time : ", self.p2.best_time)
+                # self.p2.printAverages()
 
-        if (self.ranked == 1):
-            end_game = end_game_object(self.p2, self.p1)
-            end_game.write_ranked_match()
-        elif:
-            end_game.write_unranked_matches()
+                end_game = end_game_object(self.p2, self.p1)
+                if (self.ranked == 1):
 
-    time.sleep(3)
-finally:
-    # GPIO.cleanup();
-    self.resetgame();
-    self.thread.stop_thread()
-GPIO.cleanup();
+                    end_game.write_ranked_match()
+                else:
+                    end_game.write_unranked_matches()
+
+            time.sleep(3)
+        finally:
+            # GPIO.cleanup()
+            self.resetgame()
+            self.thread.stop_thread()
+        GPIO.cleanup()
 
 
 #################
@@ -167,7 +167,7 @@ GPIO.cleanup();
 #################
 def roundstart(self):
     self.thread.dnf_flag = False
-    self.roundflag = False;
+    self.roundflag = False
 
     try:
 
