@@ -9,7 +9,7 @@ class Tournament:
 
     # Initialisation of all needed lists
 
-    # The Roster lists is for the participating players, whereas the Games list is for the corresponding matches
+    # The 'Roster' lists are for the participating players, whereas the 'Games' lists are for the corresponding matches
 
     # Quarter-Finals
     quarterfinalsRoster = []
