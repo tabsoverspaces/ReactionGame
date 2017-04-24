@@ -54,6 +54,9 @@ class Tournament:
         for x in range(len(games)):
             roster.append(games[x].start.winner) # incomplete
 
+    def tournament_start(self):
+        # this method will launch everything
+
     # createMatch is a placeholder, it will be replaced by the actual object used to create a match
 
     def createMatch(self, player1, player2):
