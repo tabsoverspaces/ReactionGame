@@ -96,10 +96,3 @@ class Tournament:
 # testTournament.printList(tournament1.bo8Roster)
 # testTournament.printListx2(tournament1.bo8Roster)
 # testTournament.matchCreator(tournament1.bo8Roster, tournament1.bo8Games)
-
-
-
-
-
-
-
