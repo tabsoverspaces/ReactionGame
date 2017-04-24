@@ -43,7 +43,7 @@ class Tournament:
         y = int(len(roster)/2)
         for x in (range(0, y)):
             games.append(self.createMatch(roster[x*2], roster[(x*2)+1]))
-        self.printList(self.quarterfinalsGames)
+        # self.printList(self.quarterfinalsGames)
 
     def playMatches(self, games, roster):
         for x in range(len(games)):
