@@ -26,6 +26,9 @@ class Tournament:
     # The Winner
     winner = []
 
+    # Next Match variable
+    nextMatch = 0;
+
     def __init__(self, roster): # Constructor; Gets fed a list full of player objects
         random.seed()
         temp = []
@@ -47,7 +50,10 @@ class Tournament:
 
     def playMatches(self, games, roster):
         for x in range(len(games)):
-            roster.append(games[x].start.winner)
+            self.nextMatch = 0;
+            roster.append(games[x].start().winner)
+            while (self.nextMatch == 0):
+
 
     def tournament_start(self):
         # testTournament = self.Tournament(players)
