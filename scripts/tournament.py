@@ -1,16 +1,13 @@
-# project file imports
-
 import match
 
-# other imports
+# For some reason it tells me match cannot be imported, please confirm it's working properly, it should work in theory
+# match.py line 228 returns results
 
 import random
 
-# match.py line 228 returns results
-
-
 class Tournament:
-    'Initialisation of all needed lists'
+
+    # Initialisation of all needed lists
 
     # The Roster lists is for the participating players, whereas the Games list is for the corresponding matches
 
@@ -28,8 +25,6 @@ class Tournament:
 
     # The Winner
     winner = []
-
-    # In order for the init method to work, you need to pass a whole list as argument like ['Test', 'Test2', 'Test3', 'Test4', 'Test5', 'Test6', 'Test7', 'Test8']
 
     def __init__(self, roster): # Constructor; Gets fed a list full of player objects
         random.seed()
@@ -52,11 +47,11 @@ class Tournament:
 
     def playMatches(self, games, roster):
         for x in range(len(games)):
-            roster.append(games[x].start.winner) # incomplete
+            roster.append(games[x].start.winner)
 
     def tournament_start(self):
-        #testTournament = self.Tournament(players)
-        #self.printList(self.quarterfinalsRoster)
+        # testTournament = self.Tournament(players)
+        # self.printList(self.quarterfinalsRoster)
         self.matchCreator(self.quarterfinalsRoster, self.quarterfinalsGames)
         self.playMatches(self.quarterfinalsGames, self.semifinalsRoster)
         self.matchCreator(self.semifinalsRoster, self.semifinalsGames)
@@ -64,40 +59,43 @@ class Tournament:
         self.matchCreator(self.finalRoster, self.finalGame)
         self.playMatches(self.finalGame, self.winner)
 
-    # createMatch is a placeholder, it will be replaced by the actual object used to create a match
-
     def createMatch(self, player1, player2):
         # return player1 + ' ' + player2 + ' ||';
         # Comment the previous line and uncomment the next line when the game_class takes two parameters
         return match.match_class(player1, player2, 1);
 
-    def printList(self, list):
-        for x in range(len(list)):
-            print(list[x].name, end= ' ')
-            #print(list[x], end=' ')
-        print()
 
-    def printListx2(self, list):
-        y = int(len(list)/2)
-        for x in (range(y)):
-            print(list[x*2], end= ' ')
-        print()
+    # Debug functions
+
+    # def printList(self, list):
+    #     for x in range(len(list)):
+    #         print(list[x].name, end= ' ')
+    #         #print(list[x], end=' ')
+    #     print()
+    #
+    # def printListx2(self, list):
+    #     y = int(len(list)/2)
+    #     for x in (range(y)):
+    #         print(list[x*2], end= ' ')
+    #     print()
 
 
-''' 
-The next three lines are how I imagine the whole thing is launched
-First, you generate a list with all the players, in this case strings are used but I expect player objects to be used
-Then you call the constructor to initialise the tournament and finally you start it with tournament_start
-'''
-players = ['Mike', 'Dragan', 'Filippo', 'Gilles', 'Jack', 'Sam', 'Yves', 'Patrick']
-testTournament = Tournament(players)
-testTournament.tournament_start()
+# Debug code
 
-#Tournament.tournament_start(players)
+# The next three lines are how I imagine the whole thing is launched
+# First, you generate a list with all the players, in this case strings are used but I expect player objects to be used
+# Then you call the constructor to initialise the tournament and finally you start it with tournament_start
 
-#testTournament.printList(tournament1.bo8Roster)
-#testTournament.printListx2(tournament1.bo8Roster)
-#testTournament.matchCreator(tournament1.bo8Roster, tournament1.bo8Games)
+# players = ['Mike', 'Dragan', 'Filippo', 'Gilles', 'Jack', 'Sam', 'Yves', 'Patrick']
+# testTournament = Tournament(players)
+# testTournament.tournament_start()
+
+# --------------------------------------------------------------------------------------------------------------------
+
+# Tournament.tournament_start(players)
+# testTournament.printList(tournament1.bo8Roster)
+# testTournament.printListx2(tournament1.bo8Roster)
+# testTournament.matchCreator(tournament1.bo8Roster, tournament1.bo8Games)
 
 
 
