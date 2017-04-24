@@ -36,12 +36,12 @@ class Tournament:
         temp = []
         for x in range(len(roster)):
             temp.append(roster[x])
-        self.printList(temp)
+        # self.printList(temp)
         while (len(temp) >= 1):
             rnd = random.randint(0, len(temp)-1)
             self.quarterfinalsRoster.append(temp[rnd])
             temp.remove(temp[rnd])
-        self.matchCreator(self.quarterfinalsRoster, self.quarterfinalsGames)
+        # self.matchCreator(self.quarterfinalsRoster, self.quarterfinalsGames)
 
 
     def matchCreator(self, roster, games):
@@ -55,7 +55,14 @@ class Tournament:
             roster.append(games[x].start.winner) # incomplete
 
     def tournament_start(self):
-        # this method will launch everything
+        #testTournament = self.Tournament(players)
+        #self.printList(self.quarterfinalsRoster)
+        self.matchCreator(self.quarterfinalsRoster, self.quarterfinalsGames)
+        self.playMatches(self.quarterfinalsGames, self.semifinalsRoster)
+        self.matchCreator(self.semifinalsRoster, self.semifinalsGames)
+        self.playMatches(self.semifinalsGames, self.finalRoster)
+        self.matchCreator(self.finalRoster, self.finalGame)
+        self.playMatches(self.finalGame, self.winner)
 
     # createMatch is a placeholder, it will be replaced by the actual object used to create a match
 
@@ -67,6 +74,7 @@ class Tournament:
     def printList(self, list):
         for x in range(len(list)):
             print(list[x].name, end= ' ')
+            #print(list[x], end=' ')
         print()
 
     def printListx2(self, list):
@@ -76,11 +84,20 @@ class Tournament:
         print()
 
 
-# kek = ['Mike', 'Dragan', 'Filippo', 'Gilles', 'Jack', 'Sam', 'Yves', 'Patrick']
-# tournament1 = Tournament(kek)
-# tournament1.printList(tournament1.bo8Roster)
-# tournament1.printListx2(tournament1.bo8Roster)
-# tournament1.matchCreator(tournament1.bo8Roster, tournament1.bo8Games)
+''' 
+The next three lines are how I imagine the whole thing is launched
+First, you generate a list with all the players, in this case strings are used but I expect player objects to be used
+Then you call the constructor to initialise the tournament and finally you start it with tournament_start
+'''
+players = ['Mike', 'Dragan', 'Filippo', 'Gilles', 'Jack', 'Sam', 'Yves', 'Patrick']
+testTournament = Tournament(players)
+testTournament.tournament_start()
+
+#Tournament.tournament_start(players)
+
+#testTournament.printList(tournament1.bo8Roster)
+#testTournament.printListx2(tournament1.bo8Roster)
+#testTournament.matchCreator(tournament1.bo8Roster, tournament1.bo8Games)
 
 
 
