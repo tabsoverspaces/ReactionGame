@@ -1,4 +1,4 @@
-from scripts import db
+import db
 
 
 ###########################################################
@@ -13,12 +13,12 @@ def print_stats():
       dbase = db.connect_matches()
       dcursor = dbase.cursor()
 
-      query = "SELECT COUNT(ID) FROM ranked_matches"
+      query = "SELECT COUNT(ID) FROM ranked_matches "
 
       dcursor.execute(query)
 
       ranked_matches = dcursor.fetchall()
 
       ##
-      print "Total ranked matches played : %d" %  ranked_matches[0]
+      print ("Total ranked matches played : %d" %  ranked_matches[0])
 

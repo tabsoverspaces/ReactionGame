@@ -9,10 +9,13 @@ class Player:
         self.best_time = 999
         self.reactions = []
 
+        self.dnf_won = 0
+
     def reset(self): #reset player stats
         self.roundsPlayed = 0;
         self.roundsWon = 0;
         self.reactions[:] = []
+        self.dnf_won = 0
 
     def winRound(self):
         self.roundsWon += 1;
@@ -31,7 +34,14 @@ class Player:
         sum = 0
         for x in self.reactions:
             sum+=x
-        return sum/self.roundsWon
+
+        dividor = 1
+        if self.roundsWon == self.dnf_won:
+            dividor = 1
+        else:
+            dividor = self.roundsWon-self.dnf_won
+            
+        return sum/dividor
        
     def checkBest(self, time):
         if(time < self.best_time):
