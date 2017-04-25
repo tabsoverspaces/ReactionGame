@@ -26,13 +26,15 @@ class Tournament():
     # The Winner
     winner = []
 
+    # Matches played
+    match_count
+
     def __init__(self, roster):  # Constructor; Gets fed a list full of player objects
         self.match_count = 0
         random.seed()
         temp = []
         for x in roster:
             temp.append(x)
-        # self.printList(temp)
         while (len(temp) >= 1):
             rnd = random.randint(0, len(temp) - 1)
             self.quarterfinalsRoster.append(temp[rnd])
@@ -48,49 +50,37 @@ class Tournament():
             games.append(self.createMatch(roster[x * 2], roster[(x * 2) + 1]))
         self.printList(self.quarterfinalsGames)
 
-    def playMatches(self, games, roster):
-        for x in range(len(games)):
-            roster.append((games[x].start()).winner)
+    # def playMatches(self, games, roster):
+    #     for x in range(len(games)):
+    #         roster.append((games[x].start()).winner)
 
     def play_next_match(self):
-        if (self.match_count < 3):
-            qfwinner = (self.next_match.start()).winner
-
-            self.semifinalsRoster.append(qfwinner)
-
-            self.match_count += 1
-            self.next_match = self.quarterfinalsRoster[self.match_count]
-
-        if (self.match_count == 3):
+        if (self.match_count < 4):
             qfwinner = (self.next_match.start()).winner
             self.semifinalsRoster.append(qfwinner)
-
-            self.create_semi_final_matches()
-            self.next_match = self.semifinalsGames[0]
             self.match_count += 1
 
-        if (self.match_count >= 4 and self.match_match < 5):
-            sfwinner = (self.next_match.start()).winner
+            if (self.match_count < 3):
+                self.next_match = self.quarterfinalsRoster[self.match_count]
+            else:
+                self.create_semi_final_matches()
+                self.next_match = self.semifinalsGames[0]
 
-            self.finalsRoster.append(sfwinner)
-
-            self.match_count += 1
-            self.next_match = self.semifinalsRoster[self.match_count - 4]
-
-        if (self.match_count == 5):
+        if (self.match_count == 4 or self.match_match == 5):
             sfwinner = (self.next_match.start()).winner
             self.finalsRoster.append(sfwinner)
-
-            self.create_final_match()
-            self.next_match = self.final_match
             self.match_count += 1
 
-        if (match_count == 6):
-            winner = (self.next_match.start()).winner
+            if (self.match_count == 4):
+                self.next_match = self.semifinalsRoster[self.match_count - 4]
+            else:
+                self.create_final_match()
+                self.next_match = self.finalGame
+
+        if (self.match_count == 6):
+            self.winner = (self.next_match.start()).winner
 
     def createMatch(self, player1, player2):
-        # return player1 + ' ' + player2 + ' ||';
-        # Comment the previous line and uncomment the next line when the game_class takes two parameters
         return match.match_class(player1, player2, 1)
 
     def create_quarter_final_matches(self):
@@ -104,7 +94,7 @@ class Tournament():
             self.semifinalsGames.append(match1)
 
     def create_final_match(self):
-        self.final_match = self.createMatch(self.finalsRoster[0], self.finalsRoster[1])
+        self.finalGame.append(self.createMatch(self.finalsRoster[0], self.finalsRoster[1]))
 
         # Debug functions
 
