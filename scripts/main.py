@@ -4,7 +4,7 @@ import time
 # project file imports
 import match
 
-from scripts import stats
+import stats
 
 
 ############################
@@ -21,9 +21,9 @@ def prompt_names():
       time.sleep(.25)
       
       print("Enter players' names :")
-      player1 = raw_input("Player 1 : ")
+      player1 = input("Player 1 : ")
       print("\n")
-      player2 = raw_input("Player 2 : ")
+      player2 = input("Player 2 : ")
       print("\n")
 
       match_c = match.match_class(player1, player2, 1)
@@ -37,7 +37,7 @@ choice = -1
 while(choice != 1):
       print("1.Unranked match\n2.Ranked match\n3.Stats\n4.Exit");
 
-      choice = (int(raw_input()))
+      choice = (int(input()))
 
       if choice==1:
             match = match.match_class("Player1", "Player 2", 0)

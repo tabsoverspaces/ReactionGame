@@ -1,5 +1,7 @@
 import sys
 from PyQt5.QtWidgets import *
+from PyQt5 import QtCore, QtGui
+import os
 
 
 class home_page():
@@ -12,6 +14,8 @@ class home_page():
         self.tournament_btn = QPushButton("Tournament", self.base_widget)
         self.rankings_btn = QPushButton("Rankings and stats", self.base_widget)
         self.quit_btn = QPushButton("Quit", self.base_widget)
+
+        self.image_label = QLabel(self.base_widget)
 
 
         #add buttons to a list
@@ -26,6 +30,16 @@ class home_page():
         self.base_widget.move(0,0)
         self.base_widget.resize(800, 600)
         self.base_widget.setWindowTitle("Main")
+
+        self.image_label.move(0,0)
+        self.image_label.resize(800,600)
+        
+        fileDir = os.path.dirname(os.path.realpath('__file__'))
+        image_path = os.path.join(fileDir, '../data/images/home_panel_image')
+        image = QtGui.QPixmap(image_path)
+        self.image_label.setPixmap(image)
+        self.image_label.lower()
+        
 
         #setup up buttons location
         self.set_buttons_location()
